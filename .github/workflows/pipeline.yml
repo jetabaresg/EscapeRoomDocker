@@ -15,10 +15,13 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
       
-    - name: Build and run Docker Compose
+    - - name: Install Docker Compose
       run: |
-        docker-compose up -d --build
-        sleep 5
+        sudo curl -L "https://github.com/docker/compose/releases/download/v2.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        docker-compose version
+
+# Now your next steps can use docker-compose safely.
         
     - name: Check if App is running
       run: |
