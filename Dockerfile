@@ -10,4 +10,4 @@ RUN pip install flask
 # Copiar el código fuente al contenedor
 COPY . /app
 
-CMD ["python3", "main.py"]
+CMD ["python3", "app.py","--host","0.0.0.0","--port","8080"]
